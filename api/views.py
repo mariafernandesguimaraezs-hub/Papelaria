@@ -10,7 +10,7 @@ from rest_framework import status
 @api_view(['GET', 'POST'])
 def listar_categorias(request):
     if request.method == 'GET':
-        queryset = Categoria.objects.all().order_by("nome")
+        queryset = Categoria.objects.all().order_by("id")
         serializers = CategoriaSerializer(queryset, many = True)
         return Response(serializers.data)
     elif request.method == 'POST':
@@ -41,10 +41,10 @@ def detalhe_produtos(request, pk):
         queryset = Produto.objects.all().order_by("nome")
         serializers = ProdutoSerializer(queryset, many = True)
         return Response(serializers.data)
-    elif request.method == 'POST':
+    elif request.method == 'PATCH':
         serializers = ProdutoSerializer(data=request.data)
         if serializers.is_valid():
             serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
+            return Response(serializers.data, status=status.HTTD)
         else:
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,9 +7,9 @@ class Categoria(models.Model):
     descricao = models.CharField(max_length=255)
     ativa = models.BooleanField(default=True)
     data = models.DateTimeField(auto_now_add=True)
-
+#isso cain seializer, views, error ou resultado correto 201, urls path e etc
     def __str__(self):
-        return self.nome
+            return self.nome
 
 class Produto(models.Model):
     codigo = models.CharField(max_length=20, unique=True)
@@ -21,4 +21,4 @@ class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="produtos")
 
     def __str__(self):
-        return self.nome
+        return self.nome 
